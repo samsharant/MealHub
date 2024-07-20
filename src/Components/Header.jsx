@@ -1,9 +1,12 @@
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
+import { Link } from "react-router-dom";
 
 function Header() {
   return (
     <div>
-      <ShoppingCartOutlinedIcon />
+      <Link to={"/cart"}>
+        <ShoppingCartOutlinedIcon />
+      </Link>
     </div>
   );
 }
