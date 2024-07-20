@@ -1,10 +1,11 @@
 import React from "react";
+import { ShopProvider } from "./Store/Context";
 
 function App() {
   return (
-    <div>
+    <ShopProvider>
       <h1>Hello, World!</h1>
-    </div>
+    </ShopProvider>
   );
 }
 
