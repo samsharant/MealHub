@@ -25,14 +25,10 @@ function ItemsPage() {
     }
   }, [responseData, categoryName, dispatch]);
 
-  const addToCart = (mealId) => {
+  const addToCart = (meal) => {
     dispatch({
       type: "ADD_ITEM_TO_CART",
-      payload: {
-        mealId,
-        categoryName,
-        quantity: 1,
-      },
+      payload: { ...meal, quantity: 1 },
     });
   };
 
@@ -75,7 +71,7 @@ function ItemsPage() {
         >
           +
         </Button>
-        <Button variant={"outlined"} onClick={() => addToCart(meal.idMeal)}>
+        <Button variant={"outlined"} onClick={() => addToCart(meal)}>
           add to cart
         </Button>
         <Button

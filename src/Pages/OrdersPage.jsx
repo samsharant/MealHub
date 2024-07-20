@@ -7,10 +7,33 @@ import { Box, Button } from "@mui/material";
 
 function OrdersPage() {
   const { state, dispatch } = useContext(ShopContext);
-  console.log("order placed -> ", state.cart);
+
+  useEffect(() => {
+    dispatch({ type: "CLEAR_CART" });
+  }, []);
+
   return (
     <div>
-      <h1>orders</h1>
+      Orders History
+      {state.orders.map((order) => {
+        return (
+          <>
+            <h3>{order.uniqueOrderId}</h3>
+            {order.items?.map((meal) => (
+              <>
+                <div>
+                  <h5>{meal.strMeal}</h5>
+                  <img
+                    style={{ height: "250px" }}
+                    src={meal.strMealThumb}
+                    alt={meal.strMeal}
+                  />
+                </div>
+              </>
+            ))}
+          </>
+        );
+      })}
     </div>
   );
 }

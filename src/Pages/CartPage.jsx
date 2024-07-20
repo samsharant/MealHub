@@ -1,14 +1,13 @@
 import { useContext, useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import useFetch from "../Hooks/useFetch";
 import { ShopContext } from "../Store/Context";
 import { getItemsByCatetgoryURL } from "../utils";
 import { Box, Button } from "@mui/material";
 
 function CartPage() {
+  const navigate = useNavigate();
   const { state, dispatch } = useContext(ShopContext);
-
-  const [cartItems, setCartItems] = useState([]);
 
   //   useEffect(() => {
   //     if (responseData) {
@@ -31,26 +30,27 @@ function CartPage() {
     // });
   };
 
-  console.log(state.cart, "-- cart --");
+  //   useEffect(() => {
+  //     const allItems = state.items;
+  //     const tempCartItems = [];
+  //     for (const item of state.cart) {
+  //       const { mealId, categoryName, quantity } = item;
+  //       const mealItem = allItems[categoryName].find(
+  //         (item) => item.idMeal === mealId
+  //       );
+  //       tempCartItems.push({ ...mealItem, quantity });
+  //     }
+  //     setCartItems(tempCartItems);
+  //   }, []);
 
-  useEffect(() => {
-    const allItems = state.items;
-    const tempCartItems = [];
-    for (const item of state.cart) {
-      const { mealId, categoryName, quantity } = item;
-      const mealItem = allItems[categoryName].find(
-        (item) => item.idMeal === mealId
-      );
-      tempCartItems.push({ ...mealItem, quantity });
-    }
-    setCartItems(tempCartItems);
-  }, []);
-
-  console.log(cartItems, "---------build items");
+  const handlePlaceOrder = () => {
+    dispatch({ type: "PLACE_ORDER" });
+    navigate("/orders", { replace: true });
+  };
 
   return (
     <div>
-      {cartItems.map((meal) => (
+      {state.cart?.map((meal) => (
         <>
           <div>
             <h5>{meal.strMeal}</h5>
@@ -63,9 +63,9 @@ function CartPage() {
           </div>
         </>
       ))}
-      <Link to={"/orders"}>
-        <Button variant={"outlined"}>Place order</Button>{" "}
-      </Link>
+      <Button variant={"outlined"} onClick={handlePlaceOrder}>
+        Place order
+      </Button>
     </div>
   );
 }

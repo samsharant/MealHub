@@ -34,7 +34,7 @@ const reducer = (state, action) => {
       return {
         ...state,
         cart: state.cart.map((item) => {
-          return item.mealId === action.payload.mealId
+          return item.idMeal === action.payload.mealId
             ? { ...item, quantity: item.quantity + 1 }
             : item;
         }),
@@ -43,10 +43,23 @@ const reducer = (state, action) => {
       return {
         ...state,
         cart: state.cart.map((item) =>
-          item.mealId === action.payload.mealId
+          item.idMeal === action.payload.mealId
             ? { ...item, quantity: item.quantity > 1 ? item.quantity - 1 : 1 }
             : item
         ),
+      };
+
+    case "PLACE_ORDER":
+      const uniqueOrderId = `order#${state.orders.length}`;
+      return {
+        ...state,
+        orders: [...state.orders, { uniqueOrderId, items: [...state.cart] }],
+      };
+
+    case "CLEAR_CART":
+      return {
+        ...state,
+        cart: [],
       };
     default:
       return state;
