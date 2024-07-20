@@ -1,12 +1,18 @@
-import React from "react";
+import { Routes, Route } from "react-router-dom";
+import { routes } from "./routes";
 import { ShopProvider } from "./Store/Context";
 
-function App() {
+export default function App() {
   return (
-    <ShopProvider>
-      <h1>Hello, World!</h1>
-    </ShopProvider>
+    <div className="App">
+      <ShopProvider>
+        <header />
+        <Routes>
+          {routes.map(({ path, element }) => (
+            <Route path={path} element={element} />
+          ))}
+        </Routes>
+      </ShopProvider>
+    </div>
   );
 }
-
-export default App;
