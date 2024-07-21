@@ -6,6 +6,7 @@ import { ShopContext } from "../../Store/Context";
 import { styled } from "@mui/system";
 import { addToCart } from "../../Store/Actions";
 import CustomQuantityInput from "../CustomQuantityInput/CustomQuantityInput";
+import { CustomMUIButton } from "../CommonStyles";
 
 function ListItemCard(props) {
   const { item } = props;
@@ -34,14 +35,13 @@ function ListItemCard(props) {
 
   const renderAddToCart = (item) => {
     return (
-      <Button
+      <CustomMUIButton
         sx={{ width: "100%" }}
         variant={"outlined"}
         onClick={() => addToCart(item, dispatch)}
-        fullWidth
       >
         add to cart
-      </Button>
+      </CustomMUIButton>
     );
   };
 
@@ -56,8 +56,10 @@ function ListItemCard(props) {
         onClick={navigateToItemDetails}
       >
         <img src={item.strMealThumb} alt={item.strMeal} />
-        <h5>{item.strMeal}</h5>
-        <h3> Price: {item.priceMeal}</h3>
+        <Box className={styles.ListItemTitleContainer}>
+          <Typography sx={{ fontWeight: 600 }}>{item.strMeal}</Typography>
+          <Typography>Price: ₹{item.priceMeal}</Typography>
+        </Box>
       </div>
       {!isItemAddedToCart(item) ? (
         <Box sx={{ width: "100%" }}>{renderAddToCart(item)}</Box>

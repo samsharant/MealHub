@@ -5,12 +5,24 @@
 }
 
 .ListItemContentContainer {
+  cursor: pointer;
 }
 
 .ListItemContentContainer img {
   width: 100%;
   height: auto;
   border-radius: 20px;
+}
+
+.ListItemTitleContainer {
+  min-height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.ListItemTitleContainer:last-child {
+  color: var(--green);
 }
 
 .BtnsContainer {

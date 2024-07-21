@@ -4,6 +4,7 @@ import useFetch from "../../Hooks/useFetch";
 import { categoriesURL } from "../../utils";
 import styles from "./CategoriesPage.module.css";
 import CategoryCard from "../../Components/CategoryCard/CategoryCard";
+import CustomTitleText from "../../Components/CustomTitleText/CustomTitleText";
 
 function CategoriesPage() {
   const { state, dispatch } = useContext(ShopContext);
@@ -14,13 +15,13 @@ function CategoriesPage() {
     if (responseData) {
       dispatch({
         type: "SET_CATEGORIES",
-        payload: responseData.categories.slice(0, 10),
+        payload: responseData.categories.slice(0, 5),
       });
     }
   }, [responseData, dispatch]);
 
   if (error) return <p>Error: {error.message}</p>;
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <CustomTitleText title={"Loading..."} />;
 
   return (
     <>

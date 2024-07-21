@@ -3,7 +3,7 @@ import styles from "./CartItemCard.module.css";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Button, Tooltip, Typography } from "@mui/material";
 import { useContext, useEffect, useState } from "react";
 import { ShopContext } from "../../Store/Context";
 import { styled } from "@mui/system";
@@ -36,6 +36,8 @@ function CartItemCard(props) {
     );
   };
 
+  console.log(cartItems);
+
   return (
     <div className={styles.CartItemCardWrapper}>
       <div className={styles.ImgContainer}>
@@ -43,7 +45,14 @@ function CartItemCard(props) {
       </div>
       <div className={styles.ContentContainer}>
         <Typography>{item.strMeal}</Typography>
-        <Typography> Price: {item.priceMeal}</Typography>
+        <Tooltip>
+          <Typography>
+            Price: ₹
+            {item.priceMeal || (
+              <span style={{ color: "gray" }}> Data not available</span>
+            )}
+          </Typography>
+        </Tooltip>
         {renderAddToCartQty(item)}
       </div>
     </div>

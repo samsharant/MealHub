@@ -6,6 +6,7 @@ import { getItemsByCatetgoryURL, getRandomPrice } from "../../utils";
 import { Box, Button } from "@mui/material";
 import styles from "./ItemsPage.module.css";
 import ListItemCard from "../../Components/ListItemCard/ListItemCard";
+import CustomTitleText from "../../Components/CustomTitleText/CustomTitleText";
 
 function ItemsPage() {
   const { categoryName } = useParams();
@@ -19,16 +20,20 @@ function ItemsPage() {
 
   useEffect(() => {
     if (responseData) {
+      const updatedResponseDataWithPrices = responseData.meals?.map((item) => {
+        item.priceMeal = getRandomPrice();
+        return item;
+      });
       dispatch({
         type: "SET_ITEMS",
         category: categoryName,
-        payload: responseData.meals,
+        payload: updatedResponseDataWithPrices,
       });
     }
   }, [responseData, categoryName, dispatch]);
 
   if (error) return <p>Error: {error.message}</p>;
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <CustomTitleText title={"Loading..."} />;
 
   const items = state.items[categoryName] || [];
   return (

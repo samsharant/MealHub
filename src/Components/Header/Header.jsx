@@ -20,14 +20,16 @@ function Header() {
 
   return (
     <header className={styles.headerWrapper}>
-      <div className={styles.logoContainer} onClick={navigateToHome}>
-        <LocalPizzaIcon /> MealHub
-      </div>
-      <div className={styles.cartContainer} onClick={navigateToCart}>
-        <Badge badgeContent={cartItemsCount} color="error">
-          <ShoppingCartOutlinedIcon />
-        </Badge>
-        Cart
+      <div className={styles.headerContainer}>
+        <div className={styles.logoContainer} onClick={navigateToHome}>
+          <LocalPizzaIcon /> MealHub
+        </div>
+        <div className={styles.cartContainer} onClick={navigateToCart}>
+          <Badge badgeContent={cartItemsCount} color="error">
+            <ShoppingCartOutlinedIcon />
+          </Badge>
+          Cart
+        </div>
       </div>
     </header>
   );

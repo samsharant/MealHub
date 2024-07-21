@@ -12,6 +12,8 @@ import styles from "./ItemDetailsPage.module.css";
 
 import { addToCart } from "../../Store/Actions";
 import CustomQuantityInput from "../../Components/CustomQuantityInput/CustomQuantityInput";
+import CustomTitleText from "../../Components/CustomTitleText/CustomTitleText";
+import { CustomMUIButton } from "../../Components/CommonStyles";
 
 function ItemDetailPage() {
   const { mealId } = useParams();
@@ -47,7 +49,7 @@ function ItemDetailPage() {
   }, [responseData, mealId, dispatch]);
 
   if (error) return <p>Error: {error.message}</p>;
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <CustomTitleText title={"Loading..."} />;
 
   const isItemAddedToCart = (item) => {
     if (!cartItems.length) return false;
@@ -56,13 +58,13 @@ function ItemDetailPage() {
 
   const renderAddToCart = (item) => {
     return (
-      <Button
+      <CustomMUIButton
         sx={{ width: "100%" }}
         variant={"outlined"}
         onClick={() => addToCart(item, dispatch)}
       >
         add to cart
-      </Button>
+      </CustomMUIButton>
     );
   };
 
@@ -82,7 +84,8 @@ function ItemDetailPage() {
         <div className={styles.ItemDetailsContainer}>
           <h3>{itemDetails.strMeal}</h3>
           <Typography>{getMealDescription(itemDetails.strMeal)}</Typography>
-          <h3>Price: {getRandomPrice()}</h3>
+          {/* price details not available in the api */}
+          {/* <h3>Price: {itemDetails.priceMeal}</h3>  */}
         </div>
         {!isItemAddedToCart(itemDetails) ? (
           renderAddToCart(itemDetails)

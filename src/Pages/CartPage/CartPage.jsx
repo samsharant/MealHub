@@ -5,15 +5,28 @@ import { Button } from "@mui/material";
 import styles from "../CartPage/CartPage.module.css";
 import CartItemCard from "../../Components/CartItemCard/CartItemCard";
 import { Typography } from "@mui/material";
+import CustomTitleText from "../../Components/CustomTitleText/CustomTitleText";
+import { CustomMUIButton } from "../../Components/CommonStyles";
 
 function CartPage() {
   const navigate = useNavigate();
   const { state, dispatch } = useContext(ShopContext);
+  const [subTotal, setSubTotal] = useState(0);
+  const deliveryCharge = 60;
 
   const handlePlaceOrder = () => {
     dispatch({ type: "PLACE_ORDER" });
     navigate("/orders", { replace: true });
   };
+
+  useEffect(() => {
+    // Calculate the subtotal
+    const newSubTotal = state.cart.reduce((acc, item) => {
+      const price = item.priceMeal;
+      return acc + (price ? price * item.quantity : 0); // Assuming `price` and `quantity` properties
+    }, 0);
+    setSubTotal(newSubTotal);
+  }, [state.cart]);
 
   return state.cart.length ? (
     <div className={styles.CartWrapper}>
@@ -28,27 +41,29 @@ function CartPage() {
           <div className={styles.PriceBreakdownContainer}>
             <div>
               <Typography>{`Price (${state.cart.length} Items)`}</Typography>
-              <Typography>4560</Typography>
+              <Typography>₹{subTotal}</Typography>
             </div>
 
             <div>
               <Typography>{`Delivery Charges`}</Typography>
-              <Typography>60</Typography>
+              <Typography>₹{deliveryCharge}</Typography>
             </div>
           </div>
 
           <div className={styles.TotalAmountContainer}>
-            <Typography>{`Total amount`}</Typography>
-            <Typography>5000</Typography>
+            <Typography sx={{ fontWeight: 600 }}>{`Total amount`}</Typography>
+            <Typography sx={{ fontWeight: 600 }}>
+              ₹{subTotal + deliveryCharge}
+            </Typography>
           </div>
         </div>
-        <Button variant={"outlined"} onClick={handlePlaceOrder}>
+        <CustomMUIButton variant={"outlined"} onClick={handlePlaceOrder}>
           Place order
-        </Button>
+        </CustomMUIButton>
       </div>
     </div>
   ) : (
-    <h3>Looks empty here!</h3>
+    <CustomTitleText title={"Looks empty here!"} />
   );
 }
 

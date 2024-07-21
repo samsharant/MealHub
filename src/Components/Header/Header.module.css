@@ -1,10 +1,16 @@
 .headerWrapper {
-  height: 50px;
-  padding: 10px 20px;
+  height: 75px;
+  display: flex;
+  background-color: var(--yellow);
+  justify-content: center;
+}
+
+.headerContainer {
+  height: 100%;
+  width: 85%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: var(--yellow);
 }
 
 .logoContainer,

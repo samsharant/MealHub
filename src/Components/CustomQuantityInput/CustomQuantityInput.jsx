@@ -12,7 +12,7 @@ function CustomQuantityInput(props) {
   const { dispatch } = useContext(ShopContext);
 
   const QuantityWrapper = styled(Box)({
-    width: width || "100%",
+    maxWidth: width || "100%",
     display: "flex",
     alignItems: "center",
     border: "1px solid var(--green)",
@@ -27,7 +27,7 @@ function CustomQuantityInput(props) {
     color: "#fff",
     borderRadius: 0,
     "&:hover": {
-      backgroundColor: "#43666f", // Maintain the same green color on hover
+      backgroundColor: "#43666f",
     },
   });
 

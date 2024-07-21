@@ -1,0 +1,9 @@
+.BackBtnContainer {
+  font-size: 2rem;
+  position: absolute;
+  display: flex;
+  justify-content: flex-start;
+  padding: 10px;
+  color: var(--green);
+  cursor: pointer;
+}

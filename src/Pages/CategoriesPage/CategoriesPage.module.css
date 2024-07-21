@@ -7,9 +7,10 @@
 
 .CategoriesWrapper {
   display: flex;
-  gap: 50px 100px;
+  justify-content: center;
+  gap: 80px;
   flex-wrap: wrap;
   width: 85%;
-  margin: 50px auto;
   font-weight: 600;
+  margin: auto;
 }
