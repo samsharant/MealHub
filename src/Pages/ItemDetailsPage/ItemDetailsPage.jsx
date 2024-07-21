@@ -7,13 +7,11 @@ import {
   getMealDescription,
   getRandomPrice,
 } from "../../utils";
-import { Box, Button, Typography } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 import styles from "./ItemDetailsPage.module.css";
-import { styled } from "@mui/system";
 
-import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
-import AddIcon from "@mui/icons-material/Add";
-import RemoveIcon from "@mui/icons-material/Remove";
+import { addToCart } from "../../Store/Actions";
+import CustomQuantityInput from "../../Components/CustomQuantityInput/CustomQuantityInput";
 
 function ItemDetailPage() {
   const { mealId } = useParams();
@@ -28,32 +26,6 @@ function ItemDetailPage() {
   const itemDetails = state.itemDetails[mealId]
     ? state.itemDetails[mealId][0]
     : {};
-
-  const QuantityWrapper = styled(Box)({
-    width: "30%",
-    display: "flex",
-    alignItems: "center",
-    border: "1px solid blue", // Match the color as in the reference image
-    borderRadius: "4px",
-    overflow: "hidden",
-  });
-
-  const QuantityButton = styled(Button)({
-    minWidth: "40px",
-    height: "40px",
-    // backgroundColor: "#ffe5ec", // Light pink background
-    // color: "#ff4081", // Match the color as in the reference image
-    borderRadius: 0,
-  });
-
-  const QuantityDisplay = styled(Typography)({
-    padding: "0 20px",
-    width: "100%",
-    textAlign: "center",
-    // color: "#ff4081", // Match the color as in the reference image
-    fontSize: "1rem",
-    fontWeight: "bold",
-  });
 
   useEffect(() => {
     const itemInCart = cartItems?.find(
@@ -77,27 +49,6 @@ function ItemDetailPage() {
   if (error) return <p>Error: {error.message}</p>;
   if (loading) return <p>Loading...</p>;
 
-  const addToCart = (meal) => {
-    dispatch({
-      type: "ADD_ITEM_TO_CART",
-      payload: { ...meal, quantity: 1 },
-    });
-  };
-
-  const incrementQuantity = (mealId) => {
-    dispatch({
-      type: "INCREMENT_ITEM_QUANTITY",
-      payload: { mealId },
-    });
-  };
-
-  const decrementQuantity = (mealId) => {
-    dispatch({
-      type: "DECREMENT_ITEM_QUANTITY",
-      payload: { mealId },
-    });
-  };
-
   const isItemAddedToCart = (item) => {
     if (!cartItems.length) return false;
     return !!cartItems?.some((cartItem) => cartItem.idMeal === item.idMeal);
@@ -108,7 +59,7 @@ function ItemDetailPage() {
       <Button
         sx={{ width: "100%" }}
         variant={"outlined"}
-        onClick={() => addToCart(item)}
+        onClick={() => addToCart(item, dispatch)}
       >
         add to cart
       </Button>
@@ -117,34 +68,11 @@ function ItemDetailPage() {
 
   const renderAddToCartQty = (item) => {
     return (
-      <QuantityWrapper>
-        <QuantityButton
-          variant="contained"
-          onClick={() => decrementQuantity(item.idMeal)}
-        >
-          {itemQty === 1 ? <DeleteOutlineIcon /> : <RemoveIcon />}
-        </QuantityButton>
-        <QuantityDisplay>{itemQty}</QuantityDisplay>
-        <QuantityButton
-          variant="contained"
-          onClick={() => incrementQuantity(item.idMeal)}
-        >
-          <AddIcon />
-        </QuantityButton>
-      </QuantityWrapper>
+      <CustomQuantityInput item={item} itemQty={itemQty} width={"180px"} />
     );
   };
 
   return (
-    // <div>
-    //   <img
-    //     style={{ height: "50px" }}
-    //     src={meal.strMealThumb}
-    //     alt={meal.strMeal}
-    //   />
-    //   <Button>add to cart</Button>
-    // </div>
-
     <div className={styles.ItemDetailsWrapper}>
       <div className={styles.ImgWrapper}>
         <img src={itemDetails.strMealThumb} alt={itemDetails.strMeal} />
@@ -160,10 +88,10 @@ function ItemDetailPage() {
           renderAddToCart(itemDetails)
         ) : (
           <div className={styles.BtnsContainer}>
+            {renderAddToCartQty(itemDetails)}
             <Button disabled variant="outlined" sx={{ width: "60%" }}>
               Added to cart
             </Button>
-            {renderAddToCartQty(itemDetails)}
           </div>
         )}
       </div>

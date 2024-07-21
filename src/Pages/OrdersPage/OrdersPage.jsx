@@ -1,6 +1,6 @@
 import { useContext, useEffect } from "react";
 import { ShopContext } from "../../Store/Context";
-import CartItemCard from "../../Components/CartItemCard/CartItemCard";
+import { Typography } from "@mui/material";
 import styles from "./OrdersPage.module.css";
 
 function OrdersPage() {
@@ -12,13 +12,22 @@ function OrdersPage() {
 
   return (
     <div className={styles.OrdersWrapper}>
-      Orders History
       {state.orders.map((order) => {
         return (
           <div className={styles.OrderListWrapper}>
-            <h3>{order.uniqueOrderId}</h3>
+            <h3>Order ID: #{order.uniqueOrderId}</h3>
             {order.items?.map((item) => (
-              <CartItemCard item={item} readOnly={true} />
+              <div className={styles.CardWrapper}>
+                <div className={styles.ImgContainer}>
+                  <img src={item.strMealThumb} alt={item.strMeal} />
+                </div>
+                <div className={styles.ContentContainer}>
+                  <Typography>{item.strMeal}</Typography>
+                  <Typography sx={{ color: "gray" }}>
+                    Qty: {item.quantity}
+                  </Typography>
+                </div>
+              </div>
             ))}
           </div>
         );

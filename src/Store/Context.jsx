@@ -1,4 +1,5 @@
 import { createContext, useReducer } from "react";
+import { generateOrderNumber } from "../utils";
 
 const ShopContext = createContext();
 
@@ -52,7 +53,8 @@ const reducer = (state, action) => {
       };
 
     case "PLACE_ORDER":
-      const uniqueOrderId = `order#${state.orders.length}`;
+      const uniqueOrderId = generateOrderNumber();
+      console.log("gener", uniqueOrderId);
       return {
         ...state,
         orders: [...state.orders, { uniqueOrderId, items: [...state.cart] }],

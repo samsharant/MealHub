@@ -20,3 +20,14 @@ export const getRandomPrice = () => {
 export const getMealDescription = (mealName) => {
   return `Enjoy our delicious ${mealName}, made with the freshest ingredients. Perfect for any time of the day, this dish offers a delightful blend of flavors that will leave you craving more. Available in both vegetarian and non-vegetarian options, it's a wholesome choice for everyone.`;
 };
+
+export const generateOrderNumber = () => {
+  const characters =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  let orderNumber = "";
+  for (let i = 0; i < 15; i++) {
+    const randomIndex = Math.floor(Math.random() * characters.length);
+    orderNumber += characters.charAt(randomIndex);
+  }
+  return orderNumber.toUpperCase();
+};

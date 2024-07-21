@@ -1,12 +1,11 @@
 import { useNavigate } from "react-router-dom";
 import styles from "./ListItemCard.module.css";
-import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
-import AddIcon from "@mui/icons-material/Add";
-import RemoveIcon from "@mui/icons-material/Remove";
 import { Box, Button, Typography } from "@mui/material";
 import { useContext, useEffect, useState } from "react";
 import { ShopContext } from "../../Store/Context";
 import { styled } from "@mui/system";
+import { addToCart } from "../../Store/Actions";
+import CustomQuantityInput from "../CustomQuantityInput/CustomQuantityInput";
 
 function ListItemCard(props) {
   const { item } = props;
@@ -53,27 +52,6 @@ function ListItemCard(props) {
     navigate(`/item/detail/${item.idMeal}`);
   };
 
-  const addToCart = (meal) => {
-    dispatch({
-      type: "ADD_ITEM_TO_CART",
-      payload: { ...meal, quantity: 1 },
-    });
-  };
-
-  const incrementQuantity = (mealId) => {
-    dispatch({
-      type: "INCREMENT_ITEM_QUANTITY",
-      payload: { mealId },
-    });
-  };
-
-  const decrementQuantity = (mealId) => {
-    dispatch({
-      type: "DECREMENT_ITEM_QUANTITY",
-      payload: { mealId },
-    });
-  };
-
   const isItemAddedToCart = (item) => {
     if (!cartItems.length) return false;
     return !!cartItems?.some((cartItem) => cartItem.idMeal === item.idMeal);
@@ -84,7 +62,7 @@ function ListItemCard(props) {
       <Button
         sx={{ width: "100%" }}
         variant={"outlined"}
-        onClick={() => addToCart(item)}
+        onClick={() => addToCart(item, dispatch)}
       >
         add to cart
       </Button>
@@ -92,23 +70,7 @@ function ListItemCard(props) {
   };
 
   const renderAddToCartQty = (item) => {
-    return (
-      <QuantityWrapper>
-        <QuantityButton
-          variant="contained"
-          onClick={() => decrementQuantity(item.idMeal)}
-        >
-          {itemQty === 1 ? <DeleteOutlineIcon /> : <RemoveIcon />}
-        </QuantityButton>
-        <QuantityDisplay>{itemQty}</QuantityDisplay>
-        <QuantityButton
-          variant="contained"
-          onClick={() => incrementQuantity(item.idMeal)}
-        >
-          <AddIcon />
-        </QuantityButton>
-      </QuantityWrapper>
-    );
+    return <CustomQuantityInput item={item} itemQty={itemQty} width={"100%"} />;
   };
 
   return (

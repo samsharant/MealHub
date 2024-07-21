@@ -3,17 +3,16 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 30px;
+  margin-bottom: 15px;
 }
 
 .ImgContainer {
   width: 20%;
   display: flex;
-  justify-content: center;
 }
 
 .ImgContainer img {
-  width: 100px;
+  width: 85px;
   border-radius: 10px;
 }
 

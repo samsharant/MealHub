@@ -4,6 +4,7 @@ import { ShopContext } from "../../Store/Context";
 import { Button } from "@mui/material";
 import styles from "../CartPage/CartPage.module.css";
 import CartItemCard from "../../Components/CartItemCard/CartItemCard";
+import { Typography } from "@mui/material";
 
 function CartPage() {
   const navigate = useNavigate();
@@ -14,7 +15,7 @@ function CartPage() {
     navigate("/orders", { replace: true });
   };
 
-  return (
+  return state.cart.length ? (
     <div className={styles.CartWrapper}>
       <div className={styles.CartItemsWrapper}>
         {state.cart?.map((item) => (
@@ -23,12 +24,31 @@ function CartPage() {
       </div>
 
       <div className={styles.CartSummaryWrapper}>
-        <div className={styles.SummaryContainer}></div>
+        <div className={styles.SummaryContainer}>
+          <div className={styles.PriceBreakdownContainer}>
+            <div>
+              <Typography>{`Price (${state.cart.length} Items)`}</Typography>
+              <Typography>4560</Typography>
+            </div>
+
+            <div>
+              <Typography>{`Delivery Charges`}</Typography>
+              <Typography>60</Typography>
+            </div>
+          </div>
+
+          <div className={styles.TotalAmountContainer}>
+            <Typography>{`Total amount`}</Typography>
+            <Typography>5000</Typography>
+          </div>
+        </div>
         <Button variant={"outlined"} onClick={handlePlaceOrder}>
           Place order
         </Button>
       </div>
     </div>
+  ) : (
+    <h3>Looks empty here!</h3>
   );
 }
 
