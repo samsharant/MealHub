@@ -22,13 +22,12 @@ function Header() {
     <header className={styles.headerWrapper}>
       <div className={styles.headerContainer}>
         <div className={styles.logoContainer} onClick={navigateToHome}>
-          <LocalPizzaIcon /> MealHub
+          <LocalPizzaIcon sx={{ fontSize: "2rem" }} /> MealHub
         </div>
         <div className={styles.cartContainer} onClick={navigateToCart}>
           <Badge badgeContent={cartItemsCount} color="error">
             <ShoppingCartOutlinedIcon />
           </Badge>
-          Cart
         </div>
       </div>
     </header>

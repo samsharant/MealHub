@@ -24,6 +24,7 @@
 }
 
 .logoContainer {
+  font-weight: 600;
   width: 130px;
   display: flex;
   align-items: center;
@@ -31,6 +32,6 @@
 }
 
 .cartContainer {
-  width: 75px;
+  font-size: 1.6rem;
   align-items: flex-end;
 }
