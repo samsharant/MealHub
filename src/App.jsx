@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import { routes } from "./routes";
 import { ShopProvider } from "./Store/Context";
-import Header from "./Components/Header";
+import Header from "./Components/Header/Header";
 
 export default function App() {
   return (

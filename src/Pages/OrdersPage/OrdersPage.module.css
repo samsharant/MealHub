@@ -1,0 +1,14 @@
+.OrdersWrapper {
+  display: flex;
+  width: 85%;
+  margin: 50px auto;
+  min-height: 500px;
+  flex-direction: column;
+}
+
+.OrderListWrapper {
+  display: flex;
+  border: 1px solid gray;
+  margin-bottom: 20px;
+  flex-direction: column;
+}

@@ -1,0 +1,7 @@
+.CategoryItemsWrapper {
+  display: grid;
+  width: 85%;
+  margin: 50px auto;
+  gap: 20px;
+  grid-template-columns: repeat(5, 1fr);
+}

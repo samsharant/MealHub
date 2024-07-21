@@ -42,11 +42,13 @@ const reducer = (state, action) => {
     case "DECREMENT_ITEM_QUANTITY":
       return {
         ...state,
-        cart: state.cart.map((item) =>
-          item.idMeal === action.payload.mealId
-            ? { ...item, quantity: item.quantity > 1 ? item.quantity - 1 : 1 }
-            : item
-        ),
+        cart: state.cart
+          .map((item) =>
+            item.idMeal === action.payload.mealId
+              ? { ...item, quantity: item.quantity - 1 }
+              : item
+          )
+          .filter((item) => item.quantity > 0),
       };
 
     case "PLACE_ORDER":

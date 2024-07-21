@@ -1,0 +1,23 @@
+.CartItemCardWrapper {
+  height: 150px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.ImgContainer {
+  width: 20%;
+  display: flex;
+  justify-content: center;
+}
+
+.ImgContainer img {
+  width: 100px;
+  border-radius: 10px;
+}
+
+.ContentContainer {
+  width: 80%;
+  height: 100px;
+}

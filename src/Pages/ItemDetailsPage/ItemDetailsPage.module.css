@@ -1,0 +1,38 @@
+.ItemDetailsWrapper {
+  display: flex;
+  width: 85%;
+  margin: 50px auto;
+  min-height: 500px;
+  justify-content: space-between;
+}
+
+.ImgWrapper {
+  max-height: 60vh;
+  display: flex;
+  align-items: center;
+  width: 50%;
+  background-color: rgb(247, 247, 247);
+}
+
+.ImgWrapper img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.ContentWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 60vh;
+  width: 40%;
+}
+
+.ItemDetailsContainer {
+  height: 80%;
+}
+
+.BtnsContainer {
+  display: flex;
+  justify-content: space-between;
+}
