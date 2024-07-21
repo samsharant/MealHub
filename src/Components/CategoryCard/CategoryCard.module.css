@@ -9,6 +9,7 @@
   transform: scale(1.2);
 }
 
+/* not using anymore */
 .CategoryImageContainer {
   display: inline-flex;
   height: 150px;
@@ -30,8 +31,8 @@
 }
 
 .CategoryNameContainer {
+  font-weight: 600;
   padding: 20px 0;
   color: var(--green);
   font-size: 1.5rem;
-  font-weight: 400;
 }
