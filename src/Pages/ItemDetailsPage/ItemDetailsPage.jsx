@@ -2,11 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import useFetch from "../../Hooks/useFetch";
 import { ShopContext } from "../../Store/Context";
-import {
-  getItemByIdURL,
-  getMealDescription,
-  getRandomPrice,
-} from "../../utils";
+import { getItemByIdURL, getMealDescription } from "../../utils";
 import { Button, Typography } from "@mui/material";
 import styles from "./ItemDetailsPage.module.css";
 

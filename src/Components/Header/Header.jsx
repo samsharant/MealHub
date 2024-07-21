@@ -2,7 +2,7 @@ import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import LocalPizzaIcon from "@mui/icons-material/LocalPizza";
 import { useNavigate } from "react-router-dom";
 import styles from "./Header.module.css";
-import { Badge, Typography } from "@mui/material";
+import { Badge } from "@mui/material";
 import { useContext } from "react";
 import { ShopContext } from "../../Store/Context";
 

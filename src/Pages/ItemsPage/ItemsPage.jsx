@@ -1,9 +1,8 @@
 import { useContext, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import useFetch from "../../Hooks/useFetch";
 import { ShopContext } from "../../Store/Context";
 import { getItemsByCatetgoryURL, getRandomPrice } from "../../utils";
-import { Box, Button } from "@mui/material";
 import styles from "./ItemsPage.module.css";
 import ListItemCard from "../../Components/ListItemCard/ListItemCard";
 import CustomTitleText from "../../Components/CustomTitleText/CustomTitleText";

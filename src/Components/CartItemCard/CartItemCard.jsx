@@ -1,13 +1,7 @@
-import { useNavigate } from "react-router-dom";
 import styles from "./CartItemCard.module.css";
-import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
-import AddIcon from "@mui/icons-material/Add";
-import RemoveIcon from "@mui/icons-material/Remove";
-import { Box, Button, Tooltip, Typography } from "@mui/material";
+import { Tooltip, Typography } from "@mui/material";
 import { useContext, useEffect, useState } from "react";
 import { ShopContext } from "../../Store/Context";
-import { styled } from "@mui/system";
-import { decrementQuantity, incrementQuantity } from "../../Store/Actions";
 import CustomQuantityInput from "../CustomQuantityInput/CustomQuantityInput";
 
 function CartItemCard(props) {

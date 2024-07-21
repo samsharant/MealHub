@@ -1,9 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import styles from "./ListItemCard.module.css";
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { useContext, useEffect, useState } from "react";
 import { ShopContext } from "../../Store/Context";
-import { styled } from "@mui/system";
 import { addToCart } from "../../Store/Actions";
 import CustomQuantityInput from "../CustomQuantityInput/CustomQuantityInput";
 import { CustomMUIButton } from "../CommonStyles";

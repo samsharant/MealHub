@@ -1,7 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ShopContext } from "../../Store/Context";
-import { Button } from "@mui/material";
 import styles from "../CartPage/CartPage.module.css";
 import CartItemCard from "../../Components/CartItemCard/CartItemCard";
 import { Typography } from "@mui/material";

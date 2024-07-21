@@ -1,3 +1,5 @@
+//common dispatch actions
+
 export const addToCart = (meal, dispatch) => {
   dispatch({
     type: "ADD_ITEM_TO_CART",
