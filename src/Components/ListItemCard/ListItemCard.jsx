@@ -56,7 +56,9 @@ function ListItemCard(props) {
       >
         <img src={item.strMealThumb} alt={item.strMeal} />
         <Box className={styles.ListItemTitleContainer}>
-          <Typography sx={{ fontWeight: 600 }}>{item.strMeal}</Typography>
+          <Typography sx={{ fontWeight: 600, color: "#424242" }}>
+            {item.strMeal}
+          </Typography>
           <Typography>Price: ₹{item.priceMeal}</Typography>
         </Box>
       </div>

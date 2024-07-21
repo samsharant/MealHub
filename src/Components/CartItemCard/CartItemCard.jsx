@@ -41,7 +41,7 @@ function CartItemCard(props) {
           <Typography>
             Price: ₹
             {item.priceMeal || (
-              <span style={{ color: "gray" }}> Data not available</span>
+              <span style={{ color: "gray" }}> Price not available</span>
             )}
           </Typography>
         </Tooltip>
