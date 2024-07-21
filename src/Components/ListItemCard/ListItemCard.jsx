@@ -14,31 +14,6 @@ function ListItemCard(props) {
   const cartItems = state.cart;
   const [itemQty, setItemQty] = useState(null);
 
-  const QuantityWrapper = styled(Box)({
-    display: "flex",
-    alignItems: "center",
-    border: "1px solid blue", // Match the color as in the reference image
-    borderRadius: "4px",
-    overflow: "hidden",
-  });
-
-  const QuantityButton = styled(Button)({
-    minWidth: "40px",
-    height: "40px",
-    // backgroundColor: "#ffe5ec", // Light pink background
-    // color: "#ff4081", // Match the color as in the reference image
-    borderRadius: 0,
-  });
-
-  const QuantityDisplay = styled(Typography)({
-    padding: "0 20px",
-    width: "100%",
-    textAlign: "center",
-    // color: "#ff4081", // Match the color as in the reference image
-    fontSize: "1rem",
-    fontWeight: "bold",
-  });
-
   useEffect(() => {
     const itemInCart = cartItems?.find(
       (cartItem) => cartItem.idMeal === item.idMeal
@@ -63,6 +38,7 @@ function ListItemCard(props) {
         sx={{ width: "100%" }}
         variant={"outlined"}
         onClick={() => addToCart(item, dispatch)}
+        fullWidth
       >
         add to cart
       </Button>
@@ -83,10 +59,11 @@ function ListItemCard(props) {
         <h5>{item.strMeal}</h5>
         <h3> Price: {item.priceMeal}</h3>
       </div>
-      {!isItemAddedToCart(item)
-        ? renderAddToCart(item)
-        : renderAddToCartQty(item)}
-      {/* <div className={styles.BtnsContainer}>{}</div> */}
+      {!isItemAddedToCart(item) ? (
+        <Box sx={{ width: "100%" }}>{renderAddToCart(item)}</Box>
+      ) : (
+        renderAddToCartQty(item)
+      )}
     </div>
   );
 }

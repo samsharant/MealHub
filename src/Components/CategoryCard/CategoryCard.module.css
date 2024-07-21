@@ -6,20 +6,20 @@
 }
 
 .CategoryCardWrapper:hover .CategoryImageContainer img {
-  transform: scale(1.1);
+  transform: scale(1.2);
 }
 
 .CategoryImageContainer {
   display: inline-flex;
-  height: 200px;
-  width: 200px;
+  height: 150px;
+  width: 150px;
   flex-direction: column;
   align-items: center;
   cursor: pointer;
   position: relative;
   border-radius: 50%;
-  background-color: #fafafa;
-  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  background-color: transparent;
+  /* box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px; */
 }
 
 .CategoryImageContainer img {
@@ -31,7 +31,7 @@
 
 .CategoryNameContainer {
   padding: 20px 0;
-  color: #0f2d00;
+  color: var(--green);
   font-size: 1.5rem;
   font-weight: 400;
 }

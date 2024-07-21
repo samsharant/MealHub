@@ -4,12 +4,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #1876d1;
+  background-color: var(--yellow);
 }
 
 .logoContainer,
 .cartContainer {
-  color: #e4e4e4;
+  color: var(--green);
   font-size: 1.2rem;
   cursor: pointer;
   display: flex;
@@ -18,9 +18,10 @@
 }
 
 .logoContainer {
-  width: 100px;
+  width: 130px;
   display: flex;
   align-items: center;
+  font-size: 1.5rem;
 }
 
 .cartContainer {

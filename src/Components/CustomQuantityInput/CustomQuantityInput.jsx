@@ -15,7 +15,7 @@ function CustomQuantityInput(props) {
     width: width || "100%",
     display: "flex",
     alignItems: "center",
-    border: "1px solid blue", // Match the color as in the reference image
+    border: "1px solid var(--green)",
     borderRadius: "4px",
     overflow: "hidden",
   });
@@ -23,16 +23,19 @@ function CustomQuantityInput(props) {
   const QuantityButton = styled(Button)({
     minWidth: "40px",
     height: height || "40px",
-    // backgroundColor: "#ffe5ec", // Light pink background
-    // color: "#ff4081", // Match the color as in the reference image
+    backgroundColor: "var(--green)",
+    color: "#fff",
     borderRadius: 0,
+    "&:hover": {
+      backgroundColor: "#43666f", // Maintain the same green color on hover
+    },
   });
 
   const QuantityDisplay = styled(Typography)({
     padding: "0 20px",
     width: "100%",
     textAlign: "center",
-    // color: "#ff4081", // Match the color as in the reference image
+    color: "var(--green)",
     fontSize: "1rem",
     fontWeight: "bold",
   });
