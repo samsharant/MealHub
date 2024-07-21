@@ -29,7 +29,7 @@ function CategoriesPage() {
 
       <div className={styles.CategoriesWrapper}>
         {state.categories.map((category) => (
-          <CategoryCard category={category} />
+          <CategoryCard key={category.strCategory} category={category} />
         ))}
       </div>
     </>

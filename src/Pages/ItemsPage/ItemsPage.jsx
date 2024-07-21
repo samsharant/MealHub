@@ -39,7 +39,7 @@ function ItemsPage() {
   return (
     <div className={styles.CategoryItemsWrapper}>
       {items.map((item) => (
-        <ListItemCard item={item} />
+        <ListItemCard key={item.idMeal} item={item} />
       ))}
     </div>
   );

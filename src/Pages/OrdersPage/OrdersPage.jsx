@@ -14,10 +14,10 @@ function OrdersPage() {
     <div className={styles.OrdersWrapper}>
       {state.orders.map((order) => {
         return (
-          <div className={styles.OrderListWrapper}>
+          <div key={order.uniqueOrderId} className={styles.OrderListWrapper}>
             <h3>Order ID: #{order.uniqueOrderId}</h3>
             {order.items?.map((item) => (
-              <div className={styles.CardWrapper}>
+              <div key={item.idMeal} className={styles.CardWrapper}>
                 <div className={styles.ImgContainer}>
                   <img src={item.strMealThumb} alt={item.strMeal} />
                 </div>

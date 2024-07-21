@@ -54,7 +54,6 @@ const reducer = (state, action) => {
 
     case "PLACE_ORDER":
       const uniqueOrderId = generateOrderNumber();
-      console.log("gener", uniqueOrderId);
       return {
         ...state,
         orders: [...state.orders, { uniqueOrderId, items: [...state.cart] }],

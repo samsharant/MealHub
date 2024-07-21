@@ -32,7 +32,7 @@ function CartPage() {
     <div className={styles.CartWrapper}>
       <div className={styles.CartItemsWrapper}>
         {state.cart?.map((item) => (
-          <CartItemCard item={item} />
+          <CartItemCard key={item.idMeal} item={item} />
         ))}
       </div>
 

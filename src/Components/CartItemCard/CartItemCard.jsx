@@ -36,8 +36,6 @@ function CartItemCard(props) {
     );
   };
 
-  console.log(cartItems);
-
   return (
     <div className={styles.CartItemCardWrapper}>
       <div className={styles.ImgContainer}>
