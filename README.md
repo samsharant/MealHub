@@ -39,7 +39,7 @@ Follow the steps below to get the project up and running on your local machine.
     npm run dev
     ```
 
-2. Open your browser and visit `http://localhost:3000` to see the application running.
+2. Open your browser and visit `http://localhost:5173` to see the application running.
 
 ## Project Structure
 
