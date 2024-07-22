@@ -37,9 +37,10 @@ function CartItemCard(props) {
       </div>
       <div className={styles.ContentContainer}>
         <Typography>{item.strMeal}</Typography>
+        <Typography sx={{ color: "gray" }}>Qty: {item.quantity}</Typography>
         <Tooltip>
           <Typography>
-            Price: ₹
+            ₹
             {item.priceMeal || (
               <span style={{ color: "gray" }}> Price not available</span>
             )}
